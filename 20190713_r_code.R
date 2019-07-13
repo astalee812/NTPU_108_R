@@ -78,8 +78,79 @@ cat("How are you?", "\t", "I'm fine.", "\n")
 cat("How are you?", "\b\b\b", "I'm fine.")
 
 
+#----索引向量----#
+x <- c(7, 2, 4, 9, NA, 4)
+x[2]
+x[5]
+x[0]  
+x[10]
+y <- x[!is.na(x)]  #找出不是na值#
+y
+(x+1)[(!is.na(x))&(x>0)] -> z
+z
+
+#把NA變成0分#
+score <- c(60,50,NA,90)
+score[is.na(score)] <- 0 
+score
+#使用xy來蓋過數值#
+rep(c(1,2,2,1), times=3)
+c("x","y")[rep(c(1,2,2,1), times=3)]
+
+x <- c(7, 2, 4, 9, NA, 4)
+x[-2]
+x[-(1:3)]
+
+x <- c(7, 2, 4, 9, NA, 4)
+x[is.na(x)] <- 0
+x
+
+y <- c(-7, 2, 4, 9, 0, -4)
+abs(y)
+#絕對值的程式設計#
+y[y<0] <- - y[y<0]
+y
+
+#向量可以給數字#
+fruit <- c(5, 10, 1, 20)
+fruit
+names(fruit) <- c("orange", "banana", "apple", "peach")
+fruit
+lunch <- fruit[c("apple", "orange")]
+lunch
+#把名字變成A1, A2, A3 ....#
+names(fruit) <- paste("A",1:length(fruit))
+
+#----因子----#
+scores <- c(60, 49, 90, 54, 54, 48, 61, 61, 51, 49, 49)
+gender <- c("f", "f", "m", "f", "m", "m", "m", "m", "f", "f", "m")
+#看我們有幾個因子#
+levels(gender)
+#把資料變成因子#
+gender.f <- factor(gender)
+gender.f
+levels(gender.f)
+table(gender.f)
+#把因子名稱換成中文#
+levels(gender.f) <- c("女", "男")
+gender.f
+(scores.mean <- tapply(scores, gender.f, mean))
+#設定有順序的因子#
+grade <- as.factor(c("B", "F", "A", "C", "A", "C", "B", "A", "F", "D"))
+levels(grade)
+grade2 <- ordered(grade, levels = rev(levels(grade))) #rev 倒過來#
+grade2
+#找出國中以上的#
+grade2[which(grade2 >= "B")] #which是篩選誰是Ture#
 
 
+MyLetter <- c("C", "D", "A", "K", "A", "I", "J", "I", "K", "H", "A", "K", "K", "B", "E", "H", "G", "L", "H", "H", "I", "K", "B", "D")
+MyLetter.factor <- factor(MyLetter)
+MyLetter.factor
+table(MyLetter.factor)
+MyLetter.ordered <- factor(MyLetter, levels = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"), ordered = TRUE)
+MyLetter.ordered[1] < MyLetter.ordered[2]
+table(MyLetter.ordered)
 
 
 
@@ -87,7 +158,6 @@ cat("How are you?", "\b\b\b", "I'm fine.")
 
 
 #----練習題----#
-
 #產生12233344455555#
 rep(1:5,1:5)
 
