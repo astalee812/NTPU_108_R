@@ -152,6 +152,93 @@ MyLetter.ordered <- factor(MyLetter, levels = c("A", "B", "C", "D", "E", "F", "G
 MyLetter.ordered[1] < MyLetter.ordered[2]
 table(MyLetter.ordered)
 
+#----陣列----#
+z <- 1:30
+z
+dim(z) <- c(3,5,2) #欄位先放#
+z
+
+z[1, 3, 2]
+z[1,1,]
+z[1,,2]
+z[1,1:2,1]
+z[-1,,]
+
+
+x <- array(1:20, dim=c(4,5))
+x
+i <- array(c(1:3, 3:1), dim=c(3,2))
+i
+x[i] <- 0  #這個我不懂#
+x
+
+
+x <- c(1,2,3,4,5)
+x
+z <- array(x, dim=c(3,4))
+z
+t(z) #t()轉至矩陣# 
+
+
+#----矩陣----#
+x <- 1:20
+A <- matrix(x, ncol=4)
+A
+A.1 <- matrix(x, ncol=4, byrow=TRUE) #byrow是讓數字變依照列為填入#
+A.1
+nrow(A)
+ncol(A)
+dim(A)
+diag(A) #單位矩陣#
+B <- matrix(x+2, ncol=4)
+A * B 
+A %*% t(B) 
+
+x <- 4
+diag(x) #單位矩陣#
+
+
+mat <- matrix(1:20, ncol=5)
+apply(mat, 1, mean) #各列平均#
+apply(mat, 2, mean) # column means
+apply(mat, 1, var) # row variances
+apply(mat, 2, var) # column variances
+mean(mat)
+var(mat) #共變異數矩陣#
+summary(mat)
+
+#----矩陣索引----#
+(y <- array(1:15, dim=c(3, 5)))
+dim(y)
+x <- matrix(1:15, 3, 5)
+x
+x[1]
+x[4]
+x <- matrix(1:15, 3, 5, byrow=TRUE)
+x
+x[1]
+x[4]
+
+y[2, 4]
+y[1,]
+y[,1]
+y[2:3, ]
+y[-2,]
+y[,-2]
+dimnames(y) #矩陣名稱#
+rownames(y)
+colnames(y) 
+
+dimnames(y) <- #给矩陣名稱-練習#
+rownames(y)
+colnames(y)
+
+
+#----矩陣結合----#
+x <- c(1, 2, 3, 4, 5)
+y <- c(0.5, 0.4, 0.3, 0.2, 0.1)
+(z1 <- cbind(x,y))
+(z2 <- rbind(x,y))
 
 
 
@@ -169,10 +256,13 @@ rep(1:3,3)
 
 #使用rev/sequence產生123452345345455#
 
+
+
+
+
 #20頁練習題#
 x <- c(NA, 0 / 0, Inf - Inf, Inf, 5) # Inf is a number. 
 x
-
 y <- data.frame(x, is.na(x), is.nan(x), x == Inf, x == 5)
 y
 
