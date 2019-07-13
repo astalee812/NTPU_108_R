@@ -169,7 +169,7 @@ x <- array(1:20, dim=c(4,5))
 x
 i <- array(c(1:3, 3:1), dim=c(3,2))
 i
-x[i] <- 0  #這個我不懂#
+x[i] <- 0
 x
 
 
@@ -235,13 +235,64 @@ colnames(y)
 
 
 #----矩陣結合----#
-x <- c(1, 2, 3, 4, 5)
-y <- c(0.5, 0.4, 0.3, 0.2, 0.1)
+x <- c(1, 2, 3, 4, 5)  #練習改一下不同維度的資料#
+y <- c(0.5, 0.4, 0.3, 0.2,0.1)
 (z1 <- cbind(x,y))
 (z2 <- rbind(x,y))
+class(x)
+class(z1)
 
+(A <- rbind(x,y))
 
+(x <- matrix(1:20, ncol=4, nrow=5))
+(y <- matrix(3:10, ncol=4))
+(z <- matrix(rep(1:5, 2),nrow=5))
 
+(B <- cbind(x,z))
+
+#----列表----#
+
+my.list <- list(name="George", 
+                wife="Mary", 
+                no.children=3, 
+                child.ages=c(4,7,9))
+
+my.list
+View(my.list)
+#----列表抓資料----#
+my.list[1] #只有一個中括弧，抓出來的資料是list#
+my.list[[1]] #有兩個中括號，抓出來得資料是vector#
+my.list[[2]]
+my.list[[4]][1] #抓出slot裡面的資料#
+my.list$name
+my.list$wife
+my.list$child.ages[1] 
+x <- "name"
+my.list[[x]]
+my.list[1] 
+my.list[2]
+
+my.list <- list(name=c("George", "John", "Tom"),
+                wife=c("Mary", "Sue", "Nico"), 
+                no.children=c(3, 2, 0), 
+                child.ages=list(c(4,7,9), c(2, 5), NA))
+
+my.list$name
+my.list$wife
+my.list$no.children
+my.list$name[3]
+my.list$name == "John"
+my.list$child.ages
+
+my.list$child.ages[2]
+my.list$child.ages[[2]]
+my.list$child.ages[2][1]  #還是只會抓[2]這件事#
+my.list$child.ages[[2]][1]
+my.list$child.ages[[2]][2]
+length(my.list)
+
+my.list[[c(2, 3)]] #兩個雙括號，他會給我第二個slot的第三個資料#
+my.list[c(2, 3)] #1個括號，會給我第2跟3的list#
 
 
 #----練習題----#
@@ -258,8 +309,6 @@ rep(1:3,3)
 
 
 
-
-
 #20頁練習題#
 x <- c(NA, 0 / 0, Inf - Inf, Inf, 5) # Inf is a number. 
 x
@@ -268,6 +317,5 @@ y
 
 colnames(y) <- c("x", "is.na(x)", "is.nan(x)", "x == Inf", "x == 5")
 y
-
 
 
