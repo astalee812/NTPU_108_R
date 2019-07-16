@@ -139,3 +139,164 @@ times <- c("23:03:20", "22:29:56", "01:03:30", "18:21:03", "16:56:26")
 x <- paste(dates, times)
 strptime(x, "%m/%d/%y %H:%M:%S")
 
+#時間相關的package: lubricate#
+
+
+(z <- 0:9)
+mode(z)
+(digits <- as.character(z))
+mode(digits)
+(d <- as.integer(digits))
+mode(d)
+(x <- z[1:5]>3)
+mode(x)
+
+x1 <- 10
+class(x1)
+x2 <- seq(1, 10, 2)
+class(x2)
+
+my.f <-  formula(iris$Sepal.Length ~ iris$Sepal.Width) #依變數 ~ 獨立變數#
+# "~" separate response variable on the left from the explanaatory variable on the right.#
+
+class(my.f)
+class(lm(my.f))
+class(aov(my.f))
+
+class(iris)
+(iris.sub <- iris[5:10, 1:4])
+class(iris.sub)
+class(as.matrix(iris.sub))
+
+as.list(iris.sub)
+class(as.list(iris.sub))
+
+
+ex1 <- expression(1 + 0:9)  # expression object
+ex1
+eval(ex1) #叫表達式裡面的東西去計算#
+class(ex1)
+
+hi <- function(){
+  cat("hello world!\n")
+}
+hi()
+class(hi) 
+
+(r.dates <- strptime(c("27/02/2004", "27/02/2005"), format="%d/%m/%Y"))
+class(r.dates)
+
+#物件結構#
+mode()
+class()
+str()
+summary()
+
+x <- 1:12
+str(x)
+ch <- letters[1:12]
+str(ch) 
+str(iris)
+str(ls)  
+str(str)
+myp <- plot(iris[,1], iris[,2])
+str(myp) #有些圖示沒有辦法存東西，但是有些圖會有額外資料存在，例如直方圖#
+
+
+(x <- as.Date("1985-6-16"))
+str(x)
+(y <- strptime("27/02/2004", format="%d/%m/%Y"))
+str(y)
+
+
+my.f <-  iris$Sepal.Length ~ iris$Sepal.Width
+my.f
+str(my.f)
+#簡單線性回歸#
+my.lm <- lm(my.f)
+my.lm
+str(my.lm)
+my.lm$coefficients
+summary(my.lm) #這個好像比較好看#
+
+#我要如何抽取p value/ F value... etc.#
+my.lm.s <- summary(my.lm)
+str(my.lm.s)
+my.lm.s$r.squared #未調整r值#
+my.lm.s$adj.r.squared #調整後的r值# y可以解釋x的程度
+my.lm.s$fstatistic #f value#
+my.lm.s$coefficients
+my.lm.s$coefficients[,4] #p value for ceofficient#
+
+#物件之間的轉換，要自己去尋找#
+?list 
+
+as.numeric(factor(c("a","b","c")))
+as.numeric(c("a","b","c")) #這個是不會work的#
+
+
+#資料輸出及輸入#
+getwd()
+setwd("")
+
+#資料輸出#
+stdout()
+?stdout
+
+#是將資料從螢幕中顯示出來，如果要大量運算! 就要用cat(x)才可以看到#
+cat()
+cat("Hello R users!\n") #\n 是一個跳脫符號#
+#把向量印出來#
+a <- c(1,2,3)
+cat("Here is a list: ", a, "\n")
+#直接在cat中計算#
+cat("3 + 5 =", 3+ 5, "\n" )
+
+cat("A test list: ", paste("Test", 1:3, sep="-"), "\n")
+#加檔案才會印到檔案中#
+cat("this is my output","\n", "2 3 5 7","\n", "11 13 17 19", file="test1.txt")
+#跟上面那個一樣的output#
+cat("this is my output", "2 3 5 7", "11 13 17 19", file="test2.txt", sep="\n")
+
+cat("today", "is", date(), sep="\t", "\n")
+#cat只能接受向量跟文字#
+
+#cat是不會回傳資料的，print會回傳文字向量#
+cat("hello")
+print("hello")
+class(cat("hello"))
+class(print("hello"))
+
+cat("Today is: ", date(), "\n")
+print("Today is: ", date()) #這個印不出來#
+
+cat(head(iris, 2)) #cat無法把資料集印出來#
+print(head(iris, 2))
+
+dice1 <- sample(1:6, 10, replace=TRUE)
+dice2 <- sample(1:6, 10, replace=TRUE)
+mytable <- table(dice1, dice2)
+mytable
+print(mytable, zero.print = ".")
+
+
+#怎麼從螢幕輸入---使用scan#
+stdin()
+a <- scan() #每按一次enter就是一筆資料，按兩次enter才會結束#
+a
+b <- scan(nmax=1)
+b
+#quiet=TRUE 為了讓提示閉嘴#
+b <- scan(nmax=1, quiet=TRUE)
+b
+#輸入字串#
+c <- scan(what="character", quiet=TRUE)
+c
+#輸入字串要限定那些句子要在一起，要用""#
+c <- scan(what="character", quiet=TRUE)
+c
+#把輸入的資料變成matrix#
+e <- scan()
+e.mat <- matrix(e, ncol=3, byrow=TRUE)
+e.mat
+
