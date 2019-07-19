@@ -1,0 +1,16 @@
+dist	climb
+Greenmantle	2.5	650
+Carnethy	6	2500
+Craig Dunain	6	900
+Ben Rha	7.5	800
+Ben Lomond	8	3070
+Goatfell	8	2866
+Bens of Jura	16	7500
+Cairnpapple	6	800
+Scolty	5	800
+Traprain	6	650
+"Lairig Ghru"	28	2100
+"Dollar"	5	2000
+"Lomonds"	9.5	2200
+"Cairn Table"	6	500
+"Eildon Two"	4.5	1500
