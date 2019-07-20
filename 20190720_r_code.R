@@ -242,7 +242,7 @@ gpa.table <- data.frame(grade=c("A", "B", "C", "D", "E"),
 gpa.table
 set.seed(12345)
 score <- sample(0:100, 10, replace=T)
-
+ #用位置來取資料，判斷式給分數tag1.2.3是給資料位子，輸出的時候可以直接用位子抽取#
 score_to_gpa <- function(x){
   
   group.id <- ifelse(x >= 80, 1, 
@@ -253,5 +253,21 @@ score_to_gpa <- function(x){
 }
 
 score_to_gpa(score)
+
+##自訂函數 function()##
+my.dist2 <- function(x1,y1,x2,y2){
+  d <- sqrt((x1-x2)^2 +(y1-y2)^2)
+  d
+}
+my.dist2(1,2,4,7)
+
+
+##直角坐標求兩點##
+my.dist3 <- function(x1, y1, x2=0, y2=0){
+  d <- sqrt((x1-x2)^2 + (y1-y2)^2)
+  list(points.a=c(x1, y1), points.b=c(x2, y2), dist.ab=d)
+}
+
+my.dist3(3,4)
 
 
