@@ -267,7 +267,8 @@ my.dist3 <- function(x1, y1, x2=0, y2=0){
   d <- sqrt((x1-x2)^2 + (y1-y2)^2)
   list(points.a=c(x1, y1), points.b=c(x2, y2), dist.ab=d)
 }
-
 my.dist3(3,4)
+
+
 
 

@@ -16,6 +16,13 @@ s1
 
 s2 <- seq(length = 51, from = -5, by = 0.2)
 s2
+#seq(from,to,length.out=by)#
+#seq(from, to)#
+#seq(from, to, by= )#
+#seq(from, to, length.out= )#
+#seq(along.with= )#
+#seq(from)#
+#seq(length.out= )#
 
 x <- 5
 rep(x, times=5)
