@@ -28,7 +28,17 @@ total <- rbind(scoreA,scoreB)
 score <- as.data.frame(total)
 score
 
-#2-53-(b) #
+#2-53-(b) # 
+str(score)
+score$小考1<-as.numeric(as.character(score$小考1))
+score$小考2<-as.numeric(as.character(score$小考2))
+score$小考3<-as.numeric(as.character(score$小考3))
+score$小考4<-as.numeric(as.character(score$小考4))
+score$TA<-as.numeric(as.character(score$TA))
+score$期中考<-as.numeric(as.character(score$期中考))
+score$期末考<-as.numeric(as.character(score$期末考))
+score$出席<-as.numeric(as.character(score$出席))
+score[is.na(score)] <- 0
 
 
 
