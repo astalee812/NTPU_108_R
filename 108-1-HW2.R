@@ -1,14 +1,73 @@
-#2-2#
+#2-2-(a)#
+x <- sample(1:10,5)
+cal <- function(x) {
+  mm <- numeric(length(x))
+  ss <- numeric(length(x))
+  for (i in 1:length(x)){
+    mm[i] <- x[i]
+    n <- length(x)
+    means <- sum(mm) / n
+  
+    vars <- (sum(x**2) - n * ((means)**2)) / (n-1)
+  }
+  print(means)
+  print(vars)
+  
+}
 
-#2-4#
+cal(x)
+
+#2-2-(b)#
+x <- sample(1:100,50)
+cal(x)
+  
+#2-2-(c)#
+x <- sample(1:100,50)
+cal(x)
+
+mean(x)
+var(x)
+
+
+#2-3#
+for(i in c(1:9)) {
+  for (j in c(1:9)){
+    z <- i*j
+    cat(i,"*",j ,"=",z,"\t")
+  }
+  cat("\n")
+}
+
+
+#2-4-(a)#
+
+#2-4-(b)#
 
 #2-7#
 
-#2-11#
+#2-11-(1)#
+
+#2-11-(2)#
+
+#2-11-(3)#
+
+#2-11-(4)#
+
 
 #2-14#
 
 #2-29#
+ComputeWeight <- function(x){ 
+my.gender <- readline(prompt="Enter gender: ")
+my.hight <- readline(prompt="Enter hight: ")
+my.hight <- as.integer(my.hight)
+standerwight <- if (my.gender == "m") {
+  standerwight <- (my.hight - 80) * 0.7
+  } else {
+  standerwight <- (my.hight - 70) * 0.6
+  }
+print(standerwight)
+}
 
 #2-33#
 
@@ -17,7 +76,14 @@
 set.seed(12345)
 score <- sample(1:100, 30, replace=T)
 summary(score)
+str(score)
 sd(score)
+score
+uper <- mean(score) + sd(score)
+low<- mean(score) - sd(score)
+score1 <- ifelse((score > uper),"A",
+                      ifelse(score < low,"C","B"))
+rbind(score,score1)
 
 
 
