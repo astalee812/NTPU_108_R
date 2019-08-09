@@ -40,21 +40,77 @@ for(i in c(1:9)) {
 
 
 #2-4-(a)#
+result <- c()
+for (i in 1) {
+  for (j in 1:5) {
+    cat(rep(c(i:j)),"\n")
+    
+  }
+}
+
+
 
 #2-4-(b)#
+for(i in 1){
+  
+  for(k in 5:1){
+    cat(rep("",k,"\t"))
+  }
+ 
+  for(j in seq(1,9,by=2)){
+    cat(rep(j,j),"\n")
+  }
+}
+
+
 
 #2-7#
+An <- (n+3) / (n+8)
+Bn <- (2*(n^2)+3) / (2*(n^2)+3)
+Cn <- (n^0.5) / (2+(n^0.5))
 
-#2-11-(1)#
 
-#2-11-(2)#
 
-#2-11-(3)#
 
-#2-11-(4)#
+#2-11#
+score <- sample(1:100, 50, replace = T)
+finalscore <- function(score){
+  score1 <- score[score < 60]
+  percentage1 <- length(score1) / length(score)
+  adjustscore <- (score^0.5) * 10 
+  percentage2 <- length(adjustscore[adjustscore < 60]) / length(adjustscore)
+  
+  maxscore1 <- max(score)
+  maxscore2 <- max(adjustscore)
+  
+  print(percentage1)
+  print(maxscore1)
+  print(percentage2 )
+  print(maxscore2)
+}
+
+finalscore(score)
 
 
 #2-14#
+set.seed(12345)
+n <- 50
+midterm <- sample(0:100, n, replace = T)
+extra <- sample(0:100, n, replace = T)
+
+finalscore <- function(midterm,extra){
+
+  final <- (midterm * 0.4) + (extra * 0.6)
+  final1 <- ifelse (final < midterm , midterm , final)
+  mm <- mean(final1)
+  ss <- var(final1)
+  
+  print(mm)
+  print(ss)
+}
+
+finalscore(midterm,extra)
+
 
 #2-29#
 ComputeWeight <- function(x){ 
