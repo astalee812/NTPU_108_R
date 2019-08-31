@@ -84,6 +84,7 @@ layout(mat1)
 myplot(3)
 par(orig.par)
 
+#layout 一張多圖#
 orig.par <- par(mai=c(0.1, 0.1, 0.1, 0.1))
 (mat1 <- matrix(c(1,2,1,3), 2, 2))
 layout(mat1)
