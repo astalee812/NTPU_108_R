@@ -197,23 +197,40 @@ axis(4, lty=2, lwd = 2, las=2)
 
 plot(1:8, xaxt = "n",  xlab = "")
 axis(1, labels = FALSE)
-my.labels <- paste("Label", 1:8, sep = "-") #把坐標軸的字變成斜的#
-text(1:8, par("usr")[3] - 0.25, srt = 45, adj = 1, 
-     labels = my.labels, xpd = TRUE)
+my.labels <- paste("Label", 1:8, sep = "-") 
+text(1:8, par("usr")[3] - 0.25, srt = 45, adj = 1, #srt=45,把坐標軸的字變成斜的45度#
+     labels = my.labels, xpd = TRUE) #xpd限定畫圖在第二層上#
 mtext(1, text = "X Axis Label", line = 3)
 
 par("usr")
 
-
+#畫方形#
 plot(0, xlim=c(0,14), ylim=c(0, 14), type = "n", 
      xlab = "", ylab = "", main = "Rectangles")
 rect(1, 2, 3, 6)
 n <- 0:3
 rect(5+n, 5+n, 6+2*n, 6+2*n, col = rainbow(4), border = n+1, lwd=4)
 
-symbols(x = c(2, 6), y = c(2, 6), circles = c(1, 4), xlim=c(0, 10), ylim=c(0, 10), bg=c("red", "gray"), xlab="", ylab="")
+
+symbols(x = c(2, 7), y = c(2, 5), circles = c(1, 7), xlim=c(0, 10), ylim=c(0, 10), bg=c("red", "gray"), xlab="", ylab="")
 
 
+##
+plot(c(100, 250), c(300, 450), type = "n", xlab = "", ylab = "")
+i1 <- as.raster(matrix(0:1, ncol = 6, nrow = 7))
+rasterImage(i1, 180, 380, 220, 430, interpolate = FALSE)
+
+i2 <- as.raster(matrix(colors()[1:100], ncol = 5))
+rasterImage(i2, 100, 300, 150, 400, interpolate = FALSE) 
 
 
+#這個我跑不了，package: EBImage這個無法下載#
+install.packages(c("tiff", "jpeg", "png", "fftwtools"), repos="http://cran.csie.ntu.edu.tw")
+install.packages("EBImage")
+library(EBImage) # (Repositories: BioC Software)
+Transformers <- readImage("Transformers07.jpg")
+(dims <- dim(Transformers))
+Transformers
 
+plot(c(0, dims[1]), c(0, dims[2]), type='n', xlab="", ylab="")
+rasterImage(Transformers, 0, 0, dims[1], dims[2])
