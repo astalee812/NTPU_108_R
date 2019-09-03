@@ -224,11 +224,12 @@ i2 <- as.raster(matrix(colors()[1:100], ncol = 5))
 rasterImage(i2, 100, 300, 150, 400, interpolate = FALSE) 
 
 
-#這個我跑不了，package: EBImage這個無法下載#
+#用R來做影像處理#
 install.packages(c("tiff", "jpeg", "png", "fftwtools"), repos="http://cran.csie.ntu.edu.tw")
-install.packages("EBImage")
+install.packages("BiocManager")
+BiocManager::install("EBImage")
 library(EBImage) # (Repositories: BioC Software)
-Transformers <- readImage("Transformers07.jpg")
+Transformers <- readImage("rosal.jpg")
 (dims <- dim(Transformers))
 Transformers
 
