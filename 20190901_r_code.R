@@ -235,3 +235,5 @@ Transformers
 
 plot(c(0, dims[1]), c(0, dims[2]), type='n', xlab="", ylab="")
 rasterImage(Transformers, 0, 0, dims[1], dims[2])
+
+
