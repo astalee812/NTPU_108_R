@@ -1,0 +1,78 @@
+## 1081-R-exam2-solution.txt
+
+# ex1(a)
+rep(1:5, 5:1)
+
+# ex1(b)
+rev(7-sequence(1:6))
+
+# ex2
+cars.lm <- lm(dist ~ speed, data=cars)
+cars.lm.sm <- summary(cars.lm)
+class(cars.lm.sm)
+attributes(cars.lm.sm)
+cars.lm.sm$fstatistic
+
+# ex3(a)
+library(readxl)
+Rscore <- read_excel("R-score.xlsx", skip=1)
+head(Rscore, 5)
+colnames(Rscore) <- c("no", "grade", "id", "name", 
+                      "quiz1", "quiz2", "quiz3", "hw", "final", "attend")
+
+# ex3(b)
+apply(Rscore[,5:9], 2, mean)
+apply(Rscore[,5:9], 2, sd)
+
+# ex3(c)
+dim(Rscore[,5:9])
+ratio <- as.matrix(c(0.1, 0.15, 0.15, 0.2,0.4), ncol=1)
+score <- as.matrix(Rscore[,5:9]) %*% ratio
+data.frame(Rscore[,"id"], score=score)
+
+# ex4(a)
+A <- matrix(c(2, 5, 4, 8, -1, 0),ncol=3)
+B <- matrix(c(2, 4, -3, -5, 2, 1, 1, 0, 2, 4, 3, 0), ncol=4)
+C <- matrix(c(2, 8, -6, -1, -3, 2), ncol=2)
+
+A %*% B
+
+# ex4(b)
+2*A + 3*t(C)
+
+# ex5
+.libPaths()
+installed.packages()
+
+# ex6
+input <- scan(what = "character")
+# hmwu 25
+#
+cat("Welcome ", input[1], ", Your age is ", input[2], "\n")
+
+# ex7
+(1000*3+500*4+50*2+10*6+1*2)/31.07
+
+# ex8(a)
+exp(1.22)
+
+# ex8(b)
+n <- 0:10
+x <- 1.22
+n.term <- x^n/factorial(n)
+data.frame(n.term=n.term, n.sum=cumsum(n.term))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

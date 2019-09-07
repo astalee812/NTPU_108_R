@@ -1,0 +1,56 @@
+# 1081-R-exam2
+
+
+# ex1(a)
+set.seed(12345)
+student.id <- paste("student", 1:50, sep=".")
+Calculus <- round(rnorm(length(student.id), mean=65, sd=10), 0)
+LinearAlgebra <- sample(1:100, length(student.id), replace = TRUE)
+
+mydata <- data.frame(Calculus, LinearAlgebra)
+rownames(mydata) <- student.id
+
+cal_note <- function(x){
+  n <- nrow(x)
+  note <- character(n)
+  for(i in 1:n){
+     if(x[i,1] > 85 & x[i,2] > 85){
+       note[i] <- "good"
+     }                       
+     if(x[i,1] < 40 | x[i,2] < 40){
+       note[i] <- "fair"
+     }
+     if(x[i,1] < 40 & x[i,2] < 40){
+       note[i] <- "danger"
+     }
+  }
+  data.frame(x, note)
+  table(note)
+}
+x <- mydata
+cal_note(mydata)
+
+
+# ex2
+x <- seq(-5, 5, 1)
+f <- function(x){
+   ifelse(x < 0, abs(x^2+x), ifelse(x >= 3, 3*exp(x), sin(x)))
+}
+data.frame(x=x, fx=f(x))
+
+
+
+
+# ex3
+set.seed(12345)
+no <- sample(20:100, 1)
+nv <- LETTERS[sample(1:26, 5)][sample(1:5, no, replace=T)]
+
+IQV <- function(x){
+  n <- length(x)
+  f <- table(x)    
+  k <- length(f)
+  iqv <- k*(n^2-sum(f^2))/(n^2*(k-1))
+  iqv
+}
+IQV(nv)
